@@ -11,17 +11,8 @@ function App() {
       <Communities />
       <main>
         <Switch>
-          <Route path='/:best?'>
-            <Best />
-          </Route>
-          <Route path='/hot'>
-            <Hot />
-          </Route>
-          <Route path='/new'>
-            <New />
-          </Route>
-          <Route path='/top'>
-            <Top />
+          <Route exact path='/'>
+            <HomePage />
           </Route>
           <Route path='/r/:subreddit/comment/:id/:title'>
             <Post />

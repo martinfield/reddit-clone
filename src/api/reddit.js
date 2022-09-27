@@ -1,4 +1,4 @@
-export const API_ROOT = 'https://wwww.reddit.com';
+export const API_ROOT = 'http://wwww.reddit.com';
 
 export const getBestPage = async() => {
     const response = await fetch(`${API_ROOT}/best.json`);

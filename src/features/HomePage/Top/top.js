@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { loadTopPage } from "../homepageSlice";
 
 export function Top() {
-   
-    return (
-        <div>
-            Now showing Page: top
-        </div>
-    )
-}
+    const dispatch = useDispatch();
+    
+    useEffect(()=> {
+        dispatch(loadTopPage());
+    }, [dispatch])
+
+        return (
+            <div>
+                Now showing Page: Top
+            </div>
+        )
+    }

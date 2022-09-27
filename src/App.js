@@ -1,6 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+
+import { Header } from './features/Header/header';
+import { NavBar } from './features/NavBar/navbar';
+import { SearchBar } from './features/SearchBar/searchbar';
+import { HomePage } from './features/HomePage/homepage';
 
 function App() {
   return (
@@ -8,20 +13,15 @@ function App() {
       <Header />
       <NavBar />
       <SearchBar />
-      <Communities />
-      <main>
-        <Switch>
-          <Route exact path='/'>
-            <HomePage />
-          </Route>
-          <Route path='/r/:subreddit/comment/:id/:title'>
-            <Post />
-          </Route>
-          <Route path='/r/:subreddit'>
-            <Subreddit />
-          </Route>
-        </Switch>
-      </main>
+      {/* <Communities /> */}
+      <div>
+          <Routes> 
+            <Route path='/*' element={<HomePage />}/>
+
+            {/* <Route path='/r/:subreddit/comment/:id/:title' element={<Post/>}/>
+            <Route path='/r/:subreddit' element={<Subreddit />}/> */}
+          </Routes>
+      </div> 
     </Router>
   );
 }

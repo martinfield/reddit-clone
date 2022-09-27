@@ -7,7 +7,7 @@ export function Best() {
     
     useEffect(()=> {
         dispatch(loadBestPage());
-    }, [])
+    }, [dispatch])
 
         return (
             <div>

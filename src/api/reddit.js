@@ -1,6 +1,4 @@
-const API_ROOT = 'https://wwww.reddit.com';
-const subreddit = 'r/AskReddit';
-const permalink = '/r/AskReddit/comments/xf7y8u/how_would_the_world_change_if_men_could_suddenly/iokzhmy/';
+export const API_ROOT = 'https://wwww.reddit.com';
 
 export const getBestPage = async() => {
     const response = await fetch(`${API_ROOT}/best.json`);
@@ -57,4 +55,11 @@ export const getPostComments = async (permalink) => {
   
     return json[1].data.children.map((subreddit) => subreddit.data);
   };
+
+export const getProfileInfo = async(name) => {
+    const response = await fetch(`${API_ROOT}/user/${name}/about.json`);
+    const json = await response.json();
+
+    return json.data.children.map(user => user.data);
+}
 

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_ROOT } from "../../api/reddit";
 
 export const loadBestPage = createAsyncThunk(
     "homepage/loadBestPage",
@@ -14,7 +13,7 @@ export const loadBestPage = createAsyncThunk(
 export const loadHotPage = createAsyncThunk(
     "homepage/loadHotPage",
     async(thunkAPI) => {
-        const data = await fetch(`${API_ROOT}/hot.json`);
+        const data = await fetch(`http://www.reddit.com/hot.json`);
         const json = await data.json();
 
         return json;
@@ -24,7 +23,7 @@ export const loadHotPage = createAsyncThunk(
 export const loadNewPage = createAsyncThunk(
     "homepage/loadNewPage",
     async(thunkAPI) => {
-        const data = await fetch(`${API_ROOT}/new.json`);
+        const data = await fetch(`http://www.reddit.com/new.json`);
         const json = await data.json();
 
         return json;
@@ -34,7 +33,7 @@ export const loadNewPage = createAsyncThunk(
 export const loadTopPage = createAsyncThunk(
     "homepage/loadTopPage",
     async(thunkAPI) => {
-        const data = await fetch(`${API_ROOT}/top.json`);
+        const data = await fetch(`http://www.reddit.com/top.json`);
         const json = await data.json();
 
         return json;

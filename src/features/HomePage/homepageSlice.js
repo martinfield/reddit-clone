@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+
+
 export const loadBestPage = createAsyncThunk(
     "homepage/loadBestPage",
     async(thunkAPI) => {
-        const data = await fetch(`http://www.reddit.com/best.json`);
+        const data = await fetch('http://www.reddit.com/best.json');
         const json = await data.json();
 
-        return json;
+        return json.data.children.map(post => post.data)
     }
 )
 
@@ -40,10 +42,21 @@ export const loadTopPage = createAsyncThunk(
     }
 )
 
+export const loadSubredditAbout = createAsyncThunk(
+    "homepage/loadSubredditAbout",
+    async(subreddit, thunkAPI) => {
+        const data = await fetch(`http://www.reddit.com/r/${subreddit}/about.json`);
+        const json = await data.json();
+
+        return json.data;
+    }
+)
+
 export const homePageSlice = createSlice({
     name: 'homePage',
     initialState: {
         posts: [],
+        subredditAbout: [],
         isLoading: false,
         hasError: false
     },
@@ -102,8 +115,17 @@ export const homePageSlice = createSlice({
         [loadTopPage.rejected]: (state, action) => {
             state.isLoading = false;
             state.hasError = true;
+        },
+        [loadSubredditAbout.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.hasError = false;
+            state.loadSubredditAbout = action.payload;
         }
     }
 })
+
+export const selectPosts = state => state.homePage.posts;
+
+export const selectSubredditAbout = state => state.homePage.loadSubredditAbout;
 
 export default homePageSlice.reducer

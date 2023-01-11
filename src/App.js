@@ -6,6 +6,10 @@ import { Header } from './features/Header/header';
 import { NavBar } from './features/NavBar/navbar';
 import { SearchBar } from './features/SearchBar/searchbar';
 import { HomePage } from './features/HomePage/homepage';
+import { Subreddit } from './features/Subreddit/subreddit';
+import { PostWithComments } from './features/Comments/postComments';
+import { Communities } from './features/Communities/communities';
+import { SearchResults } from './features/SearchBar/searchResults';
 
 function App() {
   return (
@@ -13,13 +17,14 @@ function App() {
       <Header />
       <NavBar />
       <SearchBar />
-      {/* <Communities /> */}
+      <Communities /> 
       <div>
           <Routes> 
-            <Route path='/*' element={<HomePage />}/>
-
-            {/* <Route path='/r/:subreddit/comment/:id/:title' element={<Post/>}/>
-            <Route path='/r/:subreddit' element={<Subreddit />}/> */}
+            <Route path='/' element={<HomePage />}/>
+            <Route path='/search/:searchTerm' element={<SearchResults /> } /> 
+            <Route path='/r/:subreddit/comments/:id/:title' element={<PostWithComments />}/>
+            <Route path='/r/:subreddit' element={<Subreddit />}/> 
+            
           </Routes>
       </div> 
     </Router>

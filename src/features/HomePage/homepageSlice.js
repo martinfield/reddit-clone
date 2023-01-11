@@ -15,10 +15,10 @@ export const loadBestPage = createAsyncThunk(
 export const loadHotPage = createAsyncThunk(
     "homepage/loadHotPage",
     async(thunkAPI) => {
-        const data = await fetch(`http://www.reddit.com/hot.json`);
+        const data = await fetch('http://www.reddit.com/hot.json');
         const json = await data.json();
 
-        return json;
+        return json.data.children.map(post => post.data);
     }
 )
 
@@ -28,7 +28,7 @@ export const loadNewPage = createAsyncThunk(
         const data = await fetch(`http://www.reddit.com/new.json`);
         const json = await data.json();
 
-        return json;
+        return json.data.children.map(post => post.data);
     }
 )
 
@@ -38,7 +38,7 @@ export const loadTopPage = createAsyncThunk(
         const data = await fetch(`http://www.reddit.com/top.json`);
         const json = await data.json();
 
-        return json;
+        return json.data.children.map(post => post.data);
     }
 )
 
@@ -55,21 +55,21 @@ export const loadSubredditAbout = createAsyncThunk(
 export const homePageSlice = createSlice({
     name: 'homePage',
     initialState: {
-        posts: [],
-        subredditAbout: [],
+        bestPosts: [],
+        hotPosts: [],
+        newPosts: [],
+        topPosts: [],
         isLoading: false,
         hasError: false
     },
-    reducers: {
-     
-    },
+    reducers: {},
     extraReducers: {
         [loadBestPage.pending]: (state, action) => {
             state.isLoading = true;
             state.hasError = false;
         },
         [loadBestPage.fulfilled]: (state, action) => {
-            state.posts = action.payload;
+            state.bestPosts = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },
@@ -82,7 +82,7 @@ export const homePageSlice = createSlice({
             state.hasError = false;
         },
         [loadHotPage.fulfilled]: (state, action) => {
-            state.posts = action.payload;
+            state.hotPosts = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },
@@ -95,7 +95,7 @@ export const homePageSlice = createSlice({
             state.hasError = false;
         },
         [loadNewPage.fulfilled]: (state, action) => {
-            state.posts = action.payload;
+            state.newPosts = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },
@@ -108,7 +108,7 @@ export const homePageSlice = createSlice({
             state.hasError = false;
         },
         [loadTopPage.fulfilled]: (state, action) => {
-            state.posts = action.payload;
+            state.topPosts = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },
@@ -116,16 +116,13 @@ export const homePageSlice = createSlice({
             state.isLoading = false;
             state.hasError = true;
         },
-        [loadSubredditAbout.fulfilled]: (state, action) => {
-            state.isLoading = false;
-            state.hasError = false;
-            state.loadSubredditAbout = action.payload;
-        }
+        
     }
 })
 
-export const selectPosts = state => state.homePage.posts;
+export const selectBestPosts = state => state.homePage.bestPosts;
+export const selectHotPosts = state => state.homePage.hotPosts;
+export const selectNewPosts = state => state.homePage.newPosts;
+export const selectTopPosts = state => state.homePage.topPosts;
 
-export const selectSubredditAbout = state => state.homePage.loadSubredditAbout;
-
-export default homePageSlice.reducer
+export default homePageSlice.reducer;

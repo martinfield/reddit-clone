@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadBestPage, selectPosts} from "../homepageSlice";
+import { loadBestPage, selectBestPosts} from "../homepageSlice";
 import { Post } from "../../Post/post";
 
 
 export function Best() {
     const dispatch = useDispatch();
-    const bestPosts = useSelector(selectPosts);
+    const bestPosts = useSelector(selectBestPosts);
 
     useEffect(() => {
         dispatch(loadBestPage());
-    }, [dispatch])
+    },[])
 
-
-        return (
+    return (
         <div> 
-            {bestPosts.map((post)=> {
+            {bestPosts?.map((post)=> {
                 return (
                 <Post
                 key={post.id}
-                post={post}
+                id={post.id}
                 title={post.title}
-                author={`u/${post.author}`}
+                author={post.author}
+                authorPrefixed={`u/${post.author}`}
                 subredditPrefixed={post['subreddit_name_prefixed']}
                 subreddit={post.subreddit}
                 url={post.url}
@@ -29,6 +29,8 @@ export function Best() {
                 comments={post['num_comments']}
                 votes={post.ups}
                 posthint={post['post_hint']}
+                permalink={post.permalink}
+                created={post['created_utc']}
                 />
             )})}
         </div>

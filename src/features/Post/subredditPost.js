@@ -5,13 +5,14 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import { Button, Typography } from "@mui/material";
+import { Button, Typography} from "@mui/material";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { UserInfo } from "../UserInfo/UserInfo";
 
 
-export function Post(props) {
+export function SubredditPost(props) {
     const classes = useStyles;
     let mediaSwitch;
 
@@ -31,8 +32,11 @@ export function Post(props) {
     }
     return (
         <Card key={props.author} sx={classes.root}>
+
             <CardHeader 
-            title={<Link to={`/r/${props.subreddit}`}>{props.subredditPrefixed}</Link>}
+            avatar={
+            <UserInfo username={props.author}/>
+            } 
             subheader ={`Posted by ${props.authorPrefixed} ${timeStamp(props.created)}`}
             />
             <CardContent>

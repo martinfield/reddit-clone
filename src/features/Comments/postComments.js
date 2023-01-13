@@ -4,6 +4,7 @@ import { loadComments } from "./postCommentSlice";
 import { useParams } from "react-router-dom";
 import { Post } from "../Post/post";
 import { Comments } from "./Comments";
+import '../HomePage/feed.css'
 
 export function PostWithComments() {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export function PostWithComments() {
 
     return (
         post ? 
-            <div>
+            <div className='feed-container'>
                 <Post
                 key={post.id}
                 title={post.title}
@@ -47,7 +48,6 @@ export function PostWithComments() {
                                 created={comment['created_utc']}
                                 replies={comment.replies?.data}
                             />
-                           
                             )
                     }
                 })} 

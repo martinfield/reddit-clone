@@ -5,6 +5,8 @@ import { SubredditPost } from "../Post/subredditPost";
 import { useParams } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
+import '../HomePage/feed.css'
+import './subreddit.css';
 
 export function Subreddit() {
     const dispatch = useDispatch();
@@ -20,18 +22,25 @@ export function Subreddit() {
 
     return (
         <>
-            <div>
-                <Link to={`r/${subreddit}`}>
-                    <div>
-                        <Avatar src={subredditAbout['icon_img']}/>
-                        <div>
-                            <h1>{subredditAbout.title}</h1>
-                            <h2>{subredditAbout['display_name_prefixed']}</h2>
+            <div className='feed-container'>
+                <Link className='subreddit-header-link'to={`r/${subreddit}`}>
+                    <div className='subreddit-header-container'>
+                        <Avatar 
+                        className='subreddit-header-logo'
+                        src={subredditAbout['icon_img']}
+                        sx={{
+                            height: '150px',
+                            width: '150px',
+                        }}
+                        />
+                        <div className='subreddit-header-info'>
+                            <h1 className='subreddit-header-h1'>{subredditAbout.title}</h1>
+                            <h2 className='subreddit-header-h2'>{subredditAbout['display_name_prefixed']}</h2>
                         </div>
                     </div>
                 </Link>
             </div>
-            <div>
+            <div className='feed-container'>
                 {subredditPosts.map((post)=> {
                     return (
                     <SubredditPost

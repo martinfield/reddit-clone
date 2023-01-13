@@ -9,17 +9,11 @@ export function Hot() {
     const hotPosts = useSelector(selectHotPosts);
     
     useEffect(()=> {
-        let cleanup = true;
-        if(cleanup){
-            dispatch(loadHotPage());
-        }
-        return () => {
-            cleanup = false;
-        }
-    }, [])
+         dispatch(loadHotPage());
+    }, [dispatch])
 
         return (
-            <div> 
+            <div className='feed-container'> 
             {hotPosts?.map((post)=> {
                 return (
                 <Post

@@ -2,17 +2,17 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectSearchResults } from "./searchbarSlice";
 import { Post } from "../Post/post";
+import '../HomePage/feed.css';
 
 export function SearchResults() {
     const searchResults = useSelector(selectSearchResults);
-    console.log(searchResults);
 
     if (!searchResults) {
         console.log('no search results')
       }
     
       return (
-        <div>
+        <div className='feed-container'>
           {searchResults && searchResults.map((post) => {
             return (
               <Post

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadBestPage, selectBestPosts} from "../homepageSlice";
 import { Post } from "../../Post/post";
+import '../feed.css'
 
 
 export function Best() {
@@ -10,10 +11,10 @@ export function Best() {
 
     useEffect(() => {
         dispatch(loadBestPage());
-    },[])
+    },[dispatch])
 
     return (
-        <div> 
+        <div className='feed-container'> 
             {bestPosts?.map((post)=> {
                 return (
                 <Post

@@ -8,17 +8,11 @@ export function New() {
     const newPosts = useSelector(selectNewPosts);
     
     useEffect(()=> {
-        let cleanup = true;
-        if(cleanup){
-            dispatch(loadNewPage());
-        }
-        return () => {
-            cleanup = false;
-        }
-    }, [])
+        dispatch(loadNewPage());
+    }, [dispatch])
 
         return (
-            <div>
+            <div className='feed-container'>
                 {newPosts?.map((post)=> {
                 return (
                 <Post

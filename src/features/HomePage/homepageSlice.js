@@ -1,6 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+export const loadHomePage = createAsyncThunk(
+    "homepage/loadHomePage",
+    async(thunkAPI) => {
+        const data = await fetch('http://www.reddit.com/.json');
+        const json = await data.json();
 
+        return json.data.children.map(post => post.data)
+    }
+)
 
 export const loadBestPage = createAsyncThunk(
     "homepage/loadBestPage",
@@ -55,6 +63,7 @@ export const loadSubredditAbout = createAsyncThunk(
 export const homePageSlice = createSlice({
     name: 'homePage',
     initialState: {
+        homePosts: [],
         bestPosts: [],
         hotPosts: [],
         newPosts: [],
@@ -64,6 +73,19 @@ export const homePageSlice = createSlice({
     },
     reducers: {},
     extraReducers: {
+        [loadHomePage.pending]: (state, action) => {
+            state.isLoading = true;
+            state.hasError = false;
+        },
+        [loadHomePage.fulfilled]: (state, action) => {
+            state.homePosts = action.payload;
+            state.isLoading = false;
+            state.hasError = false;
+        },
+        [loadHomePage.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.hasError = true;
+        },
         [loadBestPage.pending]: (state, action) => {
             state.isLoading = true;
             state.hasError = false;
@@ -120,6 +142,7 @@ export const homePageSlice = createSlice({
     }
 })
 
+export const selectHomePosts = state => state.homePage.homePosts;
 export const selectBestPosts = state => state.homePage.bestPosts;
 export const selectHotPosts = state => state.homePage.hotPosts;
 export const selectNewPosts = state => state.homePage.newPosts;

@@ -7,22 +7,38 @@ import CardActions from '@mui/material/CardActions';
 import {Typography} from "@mui/material";
 import moment from "moment";
 import { UserInfo } from "../UserInfo/UserInfo";
+import '../Post/post.css';
 
 
 export function Comments(props) {
     const {author, created, body, votes, replies} = props;
-    const classes = useStyles;
 
     return (
-        <Card  sx={classes.root}>
+        <Card  
+        className='post-card'
+        sx={{
+            margin: '10px',
+            maxWidth: '790px',
+            backgroundColor: 'rgb(36, 36, 36)',
+            borderRadius: '15px',
+        }}>
             <CardHeader 
+            className='post-header'
             avatar={
             <UserInfo username={author}/>
             } 
             subheader ={`Posted by u/${author} ${timeStamp(created)}`}
+            subheaderTypographyProps={{
+                fontSize: '0.9rem',
+                color: 'rgb(160, 160, 160)',
+            }}
             />
             <CardContent>
-            <Typography>{body}</Typography>
+            <Typography
+            sx={{
+                fontSize:'1rem',
+                color: 'rgb(216, 216, 216)',
+            }}>{body}</Typography>
             </CardContent>
             <CardActions>
                 <Votes votes={votes}/>
@@ -44,16 +60,6 @@ export function Comments(props) {
         </Card>
     )
 }
-
-
-
-// CSS Style Testing
-const useStyles = {
-    root: {
-        maxWidth: 600,
-        margin: 'auto',
-    }
-};
 
 //relative Time stamp
 function timeStamp(utc) {

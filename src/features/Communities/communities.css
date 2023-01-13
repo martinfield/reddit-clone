@@ -1,0 +1,27 @@
+.communities-container {
+    display: block;
+    position: absolute;
+    left: 70%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 257px;
+    border-radius: 15px;
+    z-index: 2;
+    background-color: rgb(36, 36, 36);
+
+}
+
+.communities-header {
+    color:  rgb(213, 213, 213);
+    padding-left: 15px;
+}
+
+/* .communities-list {
+    border: 1px solid white;
+} */
+
+.communities-list-link {
+    text-decoration: none; 
+    color:rgb(213, 213, 213);
+}

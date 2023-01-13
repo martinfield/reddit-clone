@@ -10,6 +10,7 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { UserInfo } from "../UserInfo/UserInfo";
+import './post.css';
 
 
 export function SubredditPost(props) {
@@ -31,23 +32,64 @@ export function SubredditPost(props) {
         />
     }
     return (
-        <Card key={props.author} sx={classes.root}>
+        <Card 
+        key={props.author} 
+        className='post-card'
+        sx={{
+            margin: '10px',
+            maxWidth: '790px',
+            backgroundColor: 'rgb(36, 36, 36)',
+            borderRadius: '15px',
+        }}>
 
             <CardHeader 
             avatar={
             <UserInfo username={props.author}/>
             } 
             subheader ={`Posted by ${props.authorPrefixed} ${timeStamp(props.created)}`}
+            subheaderTypographyProps={{
+                display: 'inline-block',
+                fontSize: '0.9rem',
+                color: 'rgb(160, 160, 160)',
+            }}
             />
             <CardContent>
-                <Typography>{props.title}</Typography>
+                <Typography
+                sx={{
+                    fontSize:'1rem',
+                    color: 'rgb(216, 216, 216)',
+                }}>{props.title}</Typography>
             </CardContent>
             {mediaSwitch}
             <CardActions>
                 <Votes votes={props.votes}/>
-                <Link to={`${props.permalink}`}>
-                    <Button variant='text'>
-                        <ChatBubbleIcon />
+                <Link 
+                to={`${props.permalink}`}
+                className='post-link'>
+                    <Button 
+                    variant='text'
+                    className='post-button'
+                    sx={{
+                        color:'rgb(213, 213, 213)',
+                        fontSize: '1rem',
+                        textTransform:'none',
+                        '&:hover': {
+                            backgroundColor: 'transparent',
+                            color: 'rgb(126, 125, 125)',
+                        }
+                    }}>
+                        <ChatBubbleIcon
+                        className='post-icon' 
+                        fontSize="medium"
+                        sx={{
+                           margin: '5px',
+                           marginRight: '10px',
+                           color: 'rgb(213, 213, 213)',
+                           '&:hover': {
+                               backgroundColor: 'transparent',
+                               color: 'rgb(126, 125, 125)',
+                           }
+                        }} />
                         {kFormatter(props.comments)} Comments
                     </Button>
                 </Link>

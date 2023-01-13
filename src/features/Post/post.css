@@ -1,4 +1,25 @@
-
-.post_link {
-    margin: auto;
+.post-media {
+    margin: 0 auto !important;
 }
+
+.post-link {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(213, 213, 213);
+}
+
+.post-link:visited {
+    text-decoration: none;
+    color: rgb(213, 213, 213);
+}
+
+.post-link:hover {
+    text-decoration: none;
+    color:  rgb(126, 125, 125);
+}
+
+.post-url {
+    color: rgb(219, 151, 74);
+    padding-left: 2%;
+}
+

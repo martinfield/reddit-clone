@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadCommunities = createAsyncThunk(
-    "communities/LoadCommunities",
+    "communities/loadCommunities",
     async(thunkAPI) => {
-        const data = await fetch('https://www.reddit.com/subreddits/popular.json');
+        const data = await fetch('https://www.reddit.com/subreddits/popular.json?limit=10');
         const json = await data.json();
 
         return json.data.children.map(post => post.data);
@@ -13,9 +13,9 @@ export const loadCommunities = createAsyncThunk(
 export const communitiesSlice = createSlice({
     name: "communities",
     initialState: {
-        communities: [],
+        communitiesArray: [],
         isLoading: false,
-        hasError: false
+        hasError: false,
     },
     reducers: {},
     extraReducers: {
@@ -24,7 +24,7 @@ export const communitiesSlice = createSlice({
             state.hasError = false;
         },
         [loadCommunities.fulfilled]: (state, action) => {
-            state.communities = action.payload;
+            state.communitiesArray = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },
@@ -35,6 +35,6 @@ export const communitiesSlice = createSlice({
     }
 })
 
-export const selectCommunities = state => state.communities?.communities;
+export const selectCommunities = state => state.communities.communitiesArray;
 
 export default communitiesSlice.reducer;

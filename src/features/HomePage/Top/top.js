@@ -8,17 +8,11 @@ export function Top() {
     const topPosts = useSelector(selectTopPosts);
     
     useEffect(()=> {
-        let cleanup = true;
-        if(cleanup){
-            dispatch(loadTopPage());
-        }
-        return () => {
-            cleanup = false;
-        }
-    }, [])
+         dispatch(loadTopPage());
+    }, [dispatch])
 
         return (
-            <div>
+            <div className='feed-container'>
                 {topPosts?.map((post)=> {
                 return (
                 <Post

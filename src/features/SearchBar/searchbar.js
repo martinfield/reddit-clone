@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadSearchResults } from "./searchbarSlice";
 import { useNavigate } from "react-router-dom";
+import './searchbar.css';
 
 
 const searchIconUrl =
@@ -12,31 +13,27 @@ export function SearchBar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (searchTerm.length > 0) {
+    const handleKeyPress = (event) => {
+        if(event.keyCode === 13) {
+            event.preventDefault();
             dispatch(loadSearchResults(searchTerm))
-            .then(()=> navigate(`/search/${searchTerm}`));
-        
+            .then(()=> navigate(`/search/${searchTerm}`))
+            .then(()=> setSearchTerm(''));
         }
-    }, [searchTerm, navigate]);
+    }
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(`Search term: ${searchTerm}`);
-        setSearchTerm('');
-    };
-
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
+        <form className='search-form' >
+            <input className='search-input'
+                type="search"
                 placeholder="Search Reddit..."
                 value={searchTerm}
                 onChange={handleChange}
+                onKeyDown={handleKeyPress}
             />         
         </form>
     );

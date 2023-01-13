@@ -9,7 +9,9 @@ import { Subreddit } from './features/Subreddit/subreddit';
 import { PostWithComments } from './features/Comments/postComments';
 import { Communities } from './features/Communities/communities';
 import { SearchResults } from './features/SearchBar/searchResults';
+import { ScrollUpButton } from './features/ScrollUpButton/scrollUpButton';
 import "./features/HomePage/feed.css"
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
       <NavBar />
       <SearchBar />
       <Communities /> 
+      <ScrollUpButton />
       <div className='feed-container'>
           <Routes> 
             <Route path='/*' element={<HomePage />}/>

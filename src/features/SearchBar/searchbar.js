@@ -4,10 +4,6 @@ import { loadSearchResults } from "./searchbarSlice";
 import { useNavigate } from "react-router-dom";
 import './searchbar.css';
 
-
-const searchIconUrl =
-  'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/search.svg';
-
 export function SearchBar() {
     const [searchTerm, setSearchTerm] = useState("");
     const dispatch = useDispatch();

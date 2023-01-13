@@ -25,7 +25,7 @@
 .subreddit-header-info {
     /* border: 1px solid white; */
     padding-left: 20px;
-    padding-top: 5px;
+    padding-top: 0px;
     width: 100%
 }
 
@@ -34,4 +34,24 @@
     bottom: 1rem;
     font-size: 1rem;
     font-weight: normal;
+}
+
+@media only screen and (min-width: 300px) and (max-width:440px){
+    .subreddit-header-logo {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .subreddit-header-container {
+        margin-bottom: 10px;
+    }
+    .subreddit-header-h1 {
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (min-width: 440px) and (max-width:800px){
+    .subreddit-header-logo {
+        width: 120px !important;
+        height: 120px !important;
+    }
 }

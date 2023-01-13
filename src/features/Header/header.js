@@ -1,6 +1,7 @@
 import React from "react";
 import RedditIcon from '@mui/icons-material/Reddit';
 import { Link } from "react-router-dom";
+import CommunitiesSmall from "../Communities/communitiesSmall";
 import './header.css';
 
 export function Header() {
@@ -10,6 +11,7 @@ export function Header() {
                 <RedditIcon className='header-icon' fontSize='large'/>
                 <h1 className='header-title'>Reddit<span className='header-simple'>Simple</span></h1>
             </Link>
+            <CommunitiesSmall />
         </div>
     )
 }

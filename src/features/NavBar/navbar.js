@@ -13,25 +13,25 @@ export function NavBar() {
                 <li className='nav-list-item'>
                     <NavLink to='/best' className='nav-list-link'>
                         <RocketIcon className='nav-list-icon' fontSize='large'/>
-                        Best
+                        <span className='nav-title'>Best</span>
                     </NavLink>
                 </li>
                 <li className='nav-list-item'>
                     <NavLink to='/hot' className='nav-list-link'>
                         <WhatshotIcon className='nav-list-icon' fontSize='large'/>
-                        Hot
+                        <span className='nav-title'>Hot</span>
                     </NavLink>
                 </li>
                 <li className='nav-list-item'>
                     <NavLink to='/new' className='nav-list-link'>
                         <NewReleasesIcon className='nav-list-icon' fontSize='large'/>
-                        New
+                        <span className='nav-title'>New</span>
                     </NavLink>
                 </li>
                 <li className='nav-list-item'>
                     <NavLink to='/top' className='nav-list-link'>
                         <LeaderboardIcon className='nav-list-icon' fontSize='large'/> 
-                        Top
+                        <span className='nav-title'>Top</span>
                     </NavLink>
                 </li>
             </ul>

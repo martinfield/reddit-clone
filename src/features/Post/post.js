@@ -34,7 +34,7 @@ export function Post(props) {
         key={props.author} 
         className='post-card'
         sx={{
-            margin: '10px',
+            marginTop: '10px',
             maxWidth: '790px',
             backgroundColor: 'rgb(36, 36, 36)',
             borderRadius: '15px',

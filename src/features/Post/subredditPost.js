@@ -14,7 +14,6 @@ import './post.css';
 
 
 export function SubredditPost(props) {
-    const classes = useStyles;
     let mediaSwitch;
 
     // show different elements depending media type: img, video, link or text
@@ -25,7 +24,6 @@ export function SubredditPost(props) {
     } else {
         mediaSwitch = 
         <CardMedia 
-        sx={classes.media}
         component={props.media ? 'video' :  'img'}
         src={props.media && props.media['reddit_video'] && props.media['reddit_video']['fallback_url'] ? props.media['reddit_video']['fallback_url'] : props.url}
         controls
@@ -36,7 +34,7 @@ export function SubredditPost(props) {
         key={props.author} 
         className='post-card'
         sx={{
-            margin: '10px',
+            marginTop: '10px',
             maxWidth: '790px',
             backgroundColor: 'rgb(36, 36, 36)',
             borderRadius: '15px',
@@ -96,18 +94,6 @@ export function SubredditPost(props) {
             </CardActions>
         </Card>
     )
-}
-
-// CSS Style Testing
-const useStyles = {
-    root: {
-        maxWidth: 790,
-        margin: 'auto',
-    },
-    media: {
-        maxWidth: 604,
-        margin: 'auto'
-    }
 }
 
 // to format vote/comment count so that it is rounded with a 'k' to one decimal point. e.g 47.2k

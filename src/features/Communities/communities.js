@@ -11,7 +11,7 @@ export function Communities() {
 
     useEffect(() => {
         dispatch(loadCommunities()); 
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className='communities-container'>

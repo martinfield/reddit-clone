@@ -8,9 +8,8 @@ import CardActions from '@mui/material/CardActions';
 import { Button, Typography } from "@mui/material";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import { Link } from "react-router-dom";
-import moment from "moment";
+import { timeStamp, kFormatter } from "../HelperFunctions/helperFunctions";
 import './post.css';
-
 
 export function Post(props) {
     let mediaSwitch;
@@ -19,7 +18,7 @@ export function Post(props) {
     if(props.posthint === "link"){
         mediaSwitch = <a className='post-url' href={props.url}>{props.url.slice(0,30) + '...'}</a>
     } else if (props.url.match('https://www.reddit.com/r/')){
-        mediaSwitch = <div></div>;
+        mediaSwitch = <div data-testid='media-empty-div'></div>;
     } else {
         mediaSwitch = 
         <CardMedia 
@@ -27,6 +26,7 @@ export function Post(props) {
         src={props.media && props.media['reddit_video'] && props.media['reddit_video']['fallback_url'] ? props.media['reddit_video']['fallback_url'] : props.url}
         controls
         className='post-media'
+        data-testid='card-media'
         />
     }
     return (
@@ -66,6 +66,7 @@ export function Post(props) {
                 <Link 
                 to={`${props.permalink}`} 
                 className='post-link'
+                data-testid='comment-link'
                 >
                     <Button 
                     variant='text' 
@@ -101,14 +102,3 @@ export function Post(props) {
     )
 }
 
-
-// to format vote/comment count so that it is rounded with a 'k' to one decimal point. e.g 47.2k
-function kFormatter(num) {
-    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
-}
-
-//relative Time stamp
-function timeStamp(utc) {
-    const dateTime = new Date(utc * 1000);
-    return moment(dateTime).fromNow();
-}

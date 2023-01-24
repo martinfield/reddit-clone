@@ -52,8 +52,8 @@ export function PostWithComments() {
                     }
                 })} 
             </div> :
-            <div>
-            </div>
-    )      
+                <div>
+                </div>
+        )      
 }
 

@@ -38,30 +38,3 @@ export function NavBar() {
         </nav>
     )
 }
-
-export function SubNavBar() {
-    return (
-        <nav>
-            <ul>
-                <li>
-                    <NavLink to='/hot'>
-                        <WhatshotIcon />
-                        Hot
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/new'>
-                        <NewReleasesIcon />
-                        New
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/top'>
-                        <LeaderboardIcon /> 
-                        Top
-                    </NavLink>
-                </li>
-            </ul>
-        </nav>
-    )
-}

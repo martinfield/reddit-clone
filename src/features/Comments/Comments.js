@@ -5,9 +5,10 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import {Typography} from "@mui/material";
-import moment from "moment";
+import { timeStamp } from "../HelperFunctions/helperFunctions";
 import { UserInfo } from "../UserInfo/UserInfo";
 import '../Post/post.css';
+
 
 
 export function Comments(props) {
@@ -59,10 +60,4 @@ export function Comments(props) {
             } 
         </Card>
     )
-}
-
-//relative Time stamp
-function timeStamp(utc) {
-    const dateTime = new Date(utc * 1000);
-    return moment(dateTime).fromNow();
 }

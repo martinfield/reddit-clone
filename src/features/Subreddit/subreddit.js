@@ -27,6 +27,7 @@ export function Subreddit() {
                     <div className='subreddit-header-container'>
                         <Avatar 
                         className='subreddit-header-logo'
+                        alt='subreddit-header-logo'
                         src={subredditAbout['icon_img']}
                         sx={{
                             height: '150px',

@@ -26,6 +26,7 @@ export function ScrollUpButton(){
       return (
     
         <Button 
+        role="button"
         onClick={scrollToTop}
         sx={{
             display: visible ? 'inline' : 'none',
@@ -43,10 +44,7 @@ export function ScrollUpButton(){
             '&:hover':{
                 color: 'rgb(219, 151, 74)',
             }
-            }} >
-            
-                Back To Top
-        </Button>  
+            }}>Back To Top</Button>  
         
       );
 }

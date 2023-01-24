@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loadSearchResults = createAsyncThunk(
-    "search/loadSearchResults",
+    "searchbar/loadSearchResults",
     async(searchTerm, thunkAPI) => {
-        const data = await fetch(`http://www.reddit.com/search/.json?q=${searchTerm}`);
+        const data = await fetch(`https://www.reddit.com/search/.json?q=${searchTerm}`);
         const json = await data.json();
 
         return json.data.children.map(post => post.data);
     }
 )
 
-const searchSlice = createSlice({
-    name: 'searchBar',
+export const searchbarSlice = createSlice({
+    name: 'searchbar',
     initialState: {
         searchResults: [],
         isLoading: false,
@@ -35,7 +35,6 @@ const searchSlice = createSlice({
     }
 })
 
-export const selectSearchResults = state => state.searchBar?.searchResults;
+export const selectSearchResults = state => state.searchbar?.searchResults;
 
-
-export default searchSlice.reducer ;
+export default searchbarSlice.reducer;

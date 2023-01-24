@@ -7,10 +7,11 @@ import { SearchBar } from './features/SearchBar/searchbar';
 import { HomePage } from './features/HomePage/homepage';
 import { Subreddit } from './features/Subreddit/subreddit';
 import { PostWithComments } from './features/Comments/postComments';
-import { Communities } from './features/Communities/communities';
-import { SearchResults } from './features/SearchBar/searchResults';
+import CommunitiesSmall from './features/Communities/communitiesSmall';
+import {SearchResults} from './features/SearchBar/searchResults'
 import { ScrollUpButton } from './features/ScrollUpButton/scrollUpButton';
 import "./features/HomePage/feed.css"
+import './features/Communities/communities.css'
 
 
 
@@ -20,7 +21,7 @@ function App() {
       <Header />
       <NavBar />
       <SearchBar />
-      <Communities /> 
+      <CommunitiesSmall /> 
       <ScrollUpButton />
       <div className='feed-container'>
           <Routes> 
@@ -28,7 +29,6 @@ function App() {
             <Route path='/r/:subreddit/comments/:id/:title' element={<PostWithComments />}/>
             <Route path='/r/:subreddit' element={<Subreddit />}/> 
             <Route path='/search/:searchTerm' element={<SearchResults /> } /> 
-            
           </Routes>
       </div> 
     </Router>

@@ -3,9 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadCommunities = createAsyncThunk(
     "communities/loadCommunities",
     async(thunkAPI) => {
-        const data = await fetch('https://www.reddit.com/subreddits/popular.json?limit=10');
+        const data = await fetch('https://www.reddit.com/subreddits/popular.json');
         const json = await data.json();
-
         return json.data.children.map(post => post.data);
     }
 )

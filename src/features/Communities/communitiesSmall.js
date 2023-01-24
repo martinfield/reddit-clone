@@ -51,6 +51,7 @@ const dispatch = useDispatch();
       </IconButton>
       <Menu
         id="long-menu"
+        data-testid='long-menu'
         MenuListProps={{
           'aria-labelledby': 'long-button',
         }}
@@ -68,8 +69,8 @@ const dispatch = useDispatch();
       <h3 className='communities-header'>Top Communities</h3>
         {communities.length > 0 && communities.map((sub) => {
                 return (
-                <MenuItem key={sub.name} className='communities-list-item'>
-                    <Link to={`r/${sub.display_name}`} className='communities-list-link'>
+                <MenuItem key={sub.name} className='communities-list-item' data-testid='communities-list-item'>
+                    <Link to={`r/${sub.display_name}`} className='communities-list-link' >
                         {`r/${sub.display_name}`}
                     </Link>
                 </MenuItem>

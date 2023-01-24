@@ -1,4 +1,4 @@
-import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
+ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
   
  
   export const fetchUser = createAsyncThunk(
@@ -10,7 +10,7 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
     }
   ); 
   
-  export const usersInfoSlice = createSlice({
+export const usersInfoSlice = createSlice({
     name: "usersInfo",
     initialState: {
       users: [],
@@ -33,7 +33,7 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
         state.hasError = true;
       }
     }
-  });
+});
 
   export const selectUser = state => state.usersInfo?.users;
 

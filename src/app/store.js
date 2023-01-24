@@ -13,7 +13,7 @@ export const store = configureStore({
     usersInfo: usersInfoSliceReducer,
     postComments: postCommentSliceReducer,
     communities: communitiesSliceReducer,
-    searchBar: searchbarSliceReducer
+    searchbar: searchbarSliceReducer,
   }
 });
 

@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadHomePage = createAsyncThunk(
     "homepage/loadHomePage",
     async(thunkAPI) => {
-        const data = await fetch('http://www.reddit.com/.json');
+        const data = await fetch('https://www.reddit.com/.json');
         const json = await data.json();
 
         return json.data.children.map(post => post.data)
@@ -13,7 +13,7 @@ export const loadHomePage = createAsyncThunk(
 export const loadBestPage = createAsyncThunk(
     "homepage/loadBestPage",
     async(thunkAPI) => {
-        const data = await fetch('http://www.reddit.com/best.json');
+        const data = await fetch('https://www.reddit.com/best.json');
         const json = await data.json();
 
         return json.data.children.map(post => post.data)
@@ -23,7 +23,7 @@ export const loadBestPage = createAsyncThunk(
 export const loadHotPage = createAsyncThunk(
     "homepage/loadHotPage",
     async(thunkAPI) => {
-        const data = await fetch('http://www.reddit.com/hot.json');
+        const data = await fetch('https://www.reddit.com/hot.json');
         const json = await data.json();
 
         return json.data.children.map(post => post.data);
@@ -33,7 +33,7 @@ export const loadHotPage = createAsyncThunk(
 export const loadNewPage = createAsyncThunk(
     "homepage/loadNewPage",
     async(thunkAPI) => {
-        const data = await fetch(`http://www.reddit.com/new.json`);
+        const data = await fetch(`https://www.reddit.com/new.json`);
         const json = await data.json();
 
         return json.data.children.map(post => post.data);
@@ -47,16 +47,6 @@ export const loadTopPage = createAsyncThunk(
         const json = await data.json();
 
         return json.data.children.map(post => post.data);
-    }
-)
-
-export const loadSubredditAbout = createAsyncThunk(
-    "homepage/loadSubredditAbout",
-    async(subreddit, thunkAPI) => {
-        const data = await fetch(`http://www.reddit.com/r/${subreddit}/about.json`);
-        const json = await data.json();
-
-        return json.data;
     }
 )
 

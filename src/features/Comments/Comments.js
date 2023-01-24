@@ -16,6 +16,7 @@ export function Comments(props) {
 
     return (
         <Card  
+        data-cy='post-item-comments'
         className='post-card'
         sx={{
             marginTop: '10px',

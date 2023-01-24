@@ -27,6 +27,7 @@ export function ScrollUpButton(){
     
         <Button 
         role="button"
+        data-cy='scroll-button'
         onClick={scrollToTop}
         sx={{
             display: visible ? 'inline' : 'none',

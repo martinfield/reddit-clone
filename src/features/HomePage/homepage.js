@@ -29,7 +29,7 @@ export function HomePage() {
                 <Route path='/top' element={<Top/>}/>
             </Routes>     
             </div>
-            <div className='feed-container' > 
+            <div className='feed-container' data-cy='feed-container-home'> 
                 {homePosts?.map((post)=> {
                     return (
                     <Post

@@ -14,7 +14,7 @@ export function Best() {
     },[dispatch])
 
     return (
-        <div className='feed-container'> 
+        <div className='feed-container' data-cy='feed-container-best'> 
             {bestPosts?.map((post)=> {
                 return (
                 <Post

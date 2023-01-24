@@ -45,7 +45,9 @@ export function Votes(props) {
                 color: 'rgb(213, 213, 213)'
              }} />
         </Button>
-        <Typography sx={{
+        <Typography
+        data-cy='votes'
+         sx={{
             margin: '3px',
             color: 'rgb(213, 213, 213)',
         }}>

@@ -26,6 +26,7 @@ export function Subreddit() {
                 <Link className='subreddit-header-link'to={`r/${subreddit}`}>
                     <div className='subreddit-header-container'>
                         <Avatar 
+                        data-cy='subreddit-icon'
                         className='subreddit-header-logo'
                         alt='subreddit-header-logo'
                         src={subredditAbout['icon_img']}
@@ -35,8 +36,8 @@ export function Subreddit() {
                         }}
                         />
                         <div className='subreddit-header-info'>
-                            <h1 className='subreddit-header-h1'>{subredditAbout.title}</h1>
-                            <h2 className='subreddit-header-h2'>{subredditAbout['display_name_prefixed']}</h2>
+                            <h1 data-cy='subreddit-title' className='subreddit-header-h1'>{subredditAbout.title}</h1>
+                            <h2 data-cy='subreddit-subtitle' className='subreddit-header-h2'>{subredditAbout['display_name_prefixed']}</h2>
                         </div>
                     </div>
                 </Link>

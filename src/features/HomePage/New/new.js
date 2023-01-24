@@ -12,7 +12,7 @@ export function New() {
     }, [dispatch])
 
         return (
-            <div className='feed-container'>
+            <div className='feed-container' data-cy='feed-container-new'>
                 {newPosts?.map((post)=> {
                 return (
                 <Post

@@ -12,7 +12,7 @@ export function Top() {
     }, [dispatch])
 
         return (
-            <div className='feed-container'>
+            <div className='feed-container' data-cy='feed-container-top'>
                 {topPosts?.map((post)=> {
                 return (
                 <Post

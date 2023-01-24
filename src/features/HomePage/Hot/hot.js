@@ -13,7 +13,7 @@ export function Hot() {
     }, [dispatch])
 
         return (
-            <div className='feed-container'> 
+            <div className='feed-container' data-cy='feed-container-hot'> 
             {hotPosts?.map((post)=> {
                 return (
                 <Post

@@ -35,6 +35,7 @@ const dispatch = useDispatch();
       <IconButton
         aria-label="more"
         id="long-button"
+        data-cy='expand-menu-button'
         aria-controls={open ? 'long-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"

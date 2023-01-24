@@ -32,6 +32,7 @@ export function SubredditPost(props) {
     }
     return (
         <Card 
+        data-cy='subreddit-post-item'
         key={props.author} 
         className='post-card'
         sx={{
@@ -67,6 +68,7 @@ export function SubredditPost(props) {
                 className='post-link'
                 data-testid='comment-link'>
                     <Button 
+                    data-cy='subreddit-comments-button'
                     variant='text'
                     className='post-button'
                     sx={{

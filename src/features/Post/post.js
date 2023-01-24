@@ -31,6 +31,7 @@ export function Post(props) {
     }
     return (
         <Card 
+        data-cy='post-item'
         key={props.author} 
         className='post-card'
         sx={{
@@ -45,7 +46,7 @@ export function Post(props) {
                 display: 'inline-block',
                 width: '100%',
             }}
-            title={<Link to={`/r/${props.subreddit}`} className='post-link'>{props.subredditPrefixed}</Link>}
+            title={<Link to={`/r/${props.subreddit}`} className='post-link' data-cy='post-title'>{props.subredditPrefixed}</Link>}
             subheader ={`Posted by ${props.authorPrefixed} ${timeStamp(props.created)}`}
             subheaderTypographyProps={{
                 display: 'inline-block',
@@ -69,6 +70,7 @@ export function Post(props) {
                 data-testid='comment-link'
                 >
                     <Button 
+                    data-cy='comments-button'
                     variant='text' 
                     className='post-button'
                     sx={{

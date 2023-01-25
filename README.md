@@ -33,7 +33,7 @@ A simple Reddit client for browsing through subreddits, posts, comments, and acc
 4. Start the development server with `npm start`
 5. Visit http://localhost:3000 in your browser to view the application
 
-The application is also accessible through this Url - 
+The application is also accessible through this Url - https://www.productive-alarm.surge.sh
 
 
 ### Running Tests
